@@ -1,0 +1,24 @@
+---
+- hosts: opendj
+# sudo: true
+  become: yes
+  become_method: sudo
+
+  tasks:
+
+    - name: Add /etc/hosts vagrant environment nodes
+      lineinfile: dest=/etc/hosts
+                  line={{ item.line }}
+                  insertafter={{ item.insertafter }}
+      with_items:
+        - { line: "# vagrant environment nodes",               insertafter: EOF }
+        - { line: "192.168.56.155  ansiserver.local.internal", insertafter: "^# vagrant environment nodes" }
+        - { line: "192.168.56.156  opendj.local.internal",     insertafter: '^192.168.56.155  ansiserver.local.internal' }
+
+  roles:
+       - { role: opendj, install_root:     "/opt",
+                         opendj_admin_port: 4444,
+                         opendj_ldap_port:   389,
+                         opendj_ldaps_port:  636,
+                         opendj_jmx_port:   1689,
+                         opendj_service_name: "opendj" }

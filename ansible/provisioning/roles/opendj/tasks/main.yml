@@ -1,0 +1,70 @@
+---
+# This role installs opendj. It will listen on the default ports (389/636 for ssl)
+
+- name: Download opendj Check
+  action: command [ -e "{{download_dir}}/{{opendj_zip}}" ]
+  register: result
+  ignore_errors: True
+- name: Download opendj
+  action: command wget --no-check-certificate "{{opendj_url}}" -O "{{download_dir}}/{{opendj_zip}}"
+  when: result|failed
+
+- name: create install root
+  file: path={{install_root}} state=directory
+
+- name: Install the package "unzip"
+  apt:
+    name: unzip
+    state: present
+
+- name: unpack opendj
+  command: chdir={{install_root}} creates={{install_root}}/opendj unzip {{ download_dir }}/{{ opendj_zip }}
+
+- name: ensure required packages are installed for Java 7
+  apt: name={{item}} state=latest update_cache=yes
+  with_items:
+    - python-software-properties
+
+- name: Add Java repository to sources
+  action: apt_repository repo='ppa:webupd8team/java'
+
+- name: Autoaccept license for Java
+  debconf: name='oracle-java7-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+
+- name: Update APT package cache
+  action: apt update_cache=yes
+
+- name: Install Java 7
+  action: apt pkg=oracle-java7-installer state=latest install_recommends=yes
+
+- name: Set Java 7 Env
+  action: apt pkg=oracle-java7-set-default state=latest install_recommends=yes
+
+- name: copy opendj props file
+  template: src=opendj.properties dest=/tmp/opendj.properties
+
+- name: setup opendj
+  command: creates={{install_root}}/opendj/config {{install_root}}/opendj/setup --cli --propertiesFilePath /tmp/opendj.properties --acceptLicense --no-prompt
+
+- name: Create rc script
+  command: "{{install_root}}/opendj/bin/create-rc-script -f /etc/init.d/{{opendj_service_name}} -u root"
+
+- name: Change the ownership on the files so the fr user can execute ldap commands
+  file: path={{install_root}}/opendj state=directory owner={{fr_user}} recurse=yes
+
+# Ignore errors as the installer may start DJ
+- name: Enable opendj - ignore errors as it may already be running
+  service: name={{opendj_service_name}} enabled=yes
+  ignore_errors: yes
+
+- name: copy opendj props file
+  copy: src=data.ldif dest=/tmp/data.ldif
+
+- name: Import genomics ldif
+  command: "{{install_root}}/opendj/bin/import-ldif  --port 4444  --hostname localhost --bindDN cn=\"Directory\ Manager\"
+    --bindPassword {{opendj_password}} --includeBranch dc=ge,dc=co,dc=uk
+    --ldifFile /tmp/data.ldif --trustAll --noPropertiesFile"
+
+- name: Sample Search
+  command: "/usr/bin/ldapsearch -h localhost  -x   -D cn=\"Directory\ Manager\" -b \"dc=ge,dc=co,dc=uk\" -s sub \"(objectclass=*)\" -w 'password'"
+

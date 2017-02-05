@@ -1,0 +1,346 @@
+dn: dc=ge,dc=co,dc=uk
+objectClass: domain
+objectClass: top
+dc: ge
+ds-sync-state: 00000159cb6b425f771c00000165
+entryUUID: 29d79cca-4147-350a-8060-d45428ca4099
+aci: (targetattr="*")(version 3.0; acl "give nromanova user read-only rights"; allow(read, search, compare)(userdn="ldap:///cn=nromanova,ou=ldap,ou=people,dc=ge,dc=co,dc=uk");)
+aci: (targetattr="*")(version 3.0; acl "give mdouglas user read-only rights"; allow(read, search, compare)(userdn="ldap:///cn=mdouglas,ou=ldap,ou=people,dc=ge,dc=co,dc=uk");)
+modifyTimestamp: 20161007142739Z
+ds-sync-generation-id: 23801732
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+
+dn: ou=people,dc=ge,dc=co,dc=uk
+objectClass: organizationalUnit
+objectClass: top
+ou: People
+modifyTimestamp: 20160113085541Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+entryUUID: 348ef0a7-856a-3190-a43e-3882652c7e6d
+
+dn: ou=groups,dc=ge,dc=co,dc=uk
+objectClass: organizationalUnit
+objectClass: top
+ou: Groups
+entryUUID: b8fa0b4e-1ede-3508-a0ce-53b814acccad
+
+dn: ou=int,ou=people,dc=ge,dc=co,dc=uk
+objectClass: organizationalUnit
+objectClass: top
+ou: int
+entryUUID: da985a63-675a-3df1-9e88-679dff8d773b
+
+dn: ou=ext,ou=people,dc=ge,dc=co,dc=uk
+objectClass: organizationalUnit
+objectClass: top
+ou: ext
+entryUUID: 493f76fa-ba81-3fe7-a2a2-d137aaef6b46
+
+dn: ou=admin,ou=groups,dc=ge,dc=co,dc=uk
+objectClass: organizationalUnit
+objectClass: top
+ou: admin
+entryUUID: 14c3fda0-24f4-3ea2-a10f-a6db94c7cb9b
+
+dn: cn=admin,ou=admin,ou=groups,dc=ge,dc=co,dc=uk
+objectClass: groupOfUniqueNames
+objectClass: posixGroup
+objectClass: top
+uniqueMember: uid=srogers,ou=int,ou=people,dc=ge,dc=co,dc=uk
+uniqueMember: uid=jjones,ou=int,ou=people,dc=ge,dc=co,dc=uk
+cn: admin
+gidNumber: 5001
+entryUUID: 8be96a81-f61f-3596-b070-13820c84ba7a
+modifyTimestamp: 20170120163849Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+
+dn: cn=engineers,ou=general,ou=groups,dc=ge,dc=co,dc=uk
+objectClass: groupOfUniqueNames
+objectClass: posixGroup
+objectClass: top
+cn: devoxf
+uniqueMember: uid=tstark,ou=ext,ou=people,dc=ge,dc=co,dc=uk
+gidNumber: 5002
+entryUUID: d964c57d-e541-309c-a002-d4eaa627b125
+modifyTimestamp: 20161207102540Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+
+dn: cn=heros,ou=general,ou=groups,dc=ge,dc=co,dc=uk
+objectClass: groupOfUniqueNames
+objectClass: posixGroup
+objectClass: top
+cn: heros
+uniqueMember: uid=srogers,ou=int,ou=people,dc=ge,dc=co,dc=uk
+uniqueMember: uid=tstark,ou=int,ou=people,dc=ge,dc=co,dc=uk
+uniqueMember: uid=mmurdock,ou=int,ou=people,dc=ge,dc=co,dc=uk
+uniqueMember: uid=pcarter,ou=int,ou=people,dc=ge,dc=co,dc=uk
+uniqueMember: uid=nromanova,ou=int,ou=people,dc=ge,dc=co,dc=uk
+gidNumber: 5010
+entryUUID: 96fbe1f9-4ac8-3e3f-a848-39810a4979a0
+modifyTimestamp: 20170110121807Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+
+dn: cn=villans,ou=general,ou=groups,dc=ge,dc=co,dc=uk
+objectClass: groupOfUniqueNames
+objectClass: posixGroup
+objectClass: top
+cn: villans
+uniqueMember: uid=hledger,ou=int,ou=people,dc=ge,dc=co,dc=uk
+uniqueMember: uid=jjones,ou=int,ou=people,dc=ge,dc=co,dc=uk
+uniqueMember: uid=ahopkins,ou=int,ou=people,dc=ge,dc=co,dc=uk
+uniqueMember: uid=mmyers,ou=int,ou=people,dc=ge,dc=co,dc=uk
+uniqueMember: uid=mdouglas,ou=int,ou=people,dc=ge,dc=co,dc=uk
+gidNumber: 5010
+entryUUID: 96fbe1f9-4ac8-3e3f-a848-39810a4979a0
+modifyTimestamp: 20170110121807Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+
+dn: uid=mdouglas,ou=int,ou=people,dc=ge,dc=co,dc=uk
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ldapPublicKey
+objectClass: shadowAccount
+objectClass: posixAccount
+objectClass: top
+givenName: Michael
+uid: mdouglas
+cn: mdouglas
+loginShell: /bin/bash
+sn: Douglas
+gecos: uid=mdouglas,ou=int,ou=people,dc=ge,dc=co,dc=uk
+userPassword: {SSHA}59d86b70cfbac79f377a75c2b489976b7126cXXX==
+homeDirectory: /home/mdouglas
+mail: mike.myers@example.com
+uidNumber: 10000
+gidNumber: 5000
+displayName: Gordon Gecko
+entryUUID: 9b018989-54cb-3ee7-a2b0-a11ed6c05ee4
+pwdChangedTime: 20170120163902.914Z
+modifyTimestamp: 20170120163902Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+
+dn: uid=mmyers,ou=int,ou=people,dc=ge,dc=co,dc=uk
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ldapPublicKey
+objectClass: shadowAccount
+objectClass: posixAccount
+objectClass: top
+givenName: Mike
+uid: mmyers
+cn: mmyers
+loginShell: /bin/bash
+sn: Myers
+gecos: uid=mmyers,ou=int,ou=people,dc=ge,dc=co,dc=uk
+userPassword: {SSHA}59d86b70cfbac79f377a75c2b489976b7126cXXX==
+homeDirectory: /home/mmyers
+mail: mike.myers@example.com
+uidNumber: 10000
+gidNumber: 5000
+displayName: Dr Evil
+entryUUID: 9b018989-54cb-3ee7-a2b0-a11ed6c05ee4
+pwdChangedTime: 20170120163902.914Z
+modifyTimestamp: 20170120163902Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+
+dn: uid=ahopkins,ou=int,ou=people,dc=ge,dc=co,dc=uk
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ldapPublicKey
+objectClass: shadowAccount
+objectClass: posixAccount
+objectClass: top
+givenName: Anthony
+uid: ahopkins
+cn: ahopkins
+loginShell: /bin/bash
+sn: Hopkins
+gecos: uid=ahopkins,ou=int,ou=people,dc=ge,dc=co,dc=uk
+userPassword: {SSHA}59d86b70cfbac79f377a75c2b489976b7126cXXX==
+homeDirectory: /home/ahopkins
+mail: anthony.hopkins@example.com
+uidNumber: 10000
+gidNumber: 5000
+displayName: Hannibal Lecter
+entryUUID: 9b018989-54cb-3ee7-a2b0-a11ed6c05ee4
+pwdChangedTime: 20170120163902.914Z
+modifyTimestamp: 20170120163902Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+
+dn: uid=jjones,ou=int,ou=people,dc=ge,dc=co,dc=uk
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ldapPublicKey
+objectClass: shadowAccount
+objectClass: posixAccount
+objectClass: top
+givenName: James Earl
+uid: jjones
+cn: jjones
+loginShell: /bin/bash
+sn: Jones
+gecos: uid=jjones,ou=int,ou=people,dc=ge,dc=co,dc=uk
+userPassword: {SSHA}59d86b70cfbac79f377a75c2b489976b7126cXXX==
+homeDirectory: /home/jjones
+mail: james.jones@example.com
+uidNumber: 10000
+gidNumber: 5000
+displayName: Darth Vader
+entryUUID: 9b018989-54cb-3ee7-a2b0-a11ed6c05ee4
+pwdChangedTime: 20170120163902.914Z
+modifyTimestamp: 20170120163902Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+
+dn: uid=hledger,ou=int,ou=people,dc=ge,dc=co,dc=uk
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ldapPublicKey
+objectClass: shadowAccount
+objectClass: posixAccount
+objectClass: top
+givenName: Heath
+uid: hledger
+cn: hledger
+loginShell: /bin/bash
+sn: Ledger
+gecos: uid=hledger,ou=int,ou=people,dc=ge,dc=co,dc=uk
+userPassword: {SSHA}59d86b70cfbac79f377a75c2b489976b7126cXXX==
+homeDirectory: /home/hledger
+mail: heath.ledger@example.com
+uidNumber: 10000
+gidNumber: 5000
+displayName: The Joker
+entryUUID: 9b018989-54cb-3ee7-a2b0-a11ed6c05ee4
+pwdChangedTime: 20170120163902.914Z
+modifyTimestamp: 20170120163902Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+
+dn: uid=nromanova,ou=int,ou=people,dc=ge,dc=co,dc=uk
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ldapPublicKey
+objectClass: shadowAccount
+objectClass: posixAccount
+objectClass: top
+givenName: Natasha
+uid: nromanova
+cn: nromanova
+loginShell: /bin/bash
+sn: Romanova
+gecos: uid=nromanova,ou=int,ou=people,dc=ge,dc=co,dc=uk
+userPassword: {SSHA}59d86b70cfbac79f377a75c2b489976b7126cXXX==
+homeDirectory: /home/nromanova
+mail: natasha.romanova@example.com
+uidNumber: 10000
+gidNumber: 5000
+displayName: Black Widow
+entryUUID: 9b018989-54cb-3ee7-a2b0-a11ed6c05ee4
+pwdChangedTime: 20170120163902.914Z
+modifyTimestamp: 20170120163902Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+
+dn: uid=pcarter,ou=int,ou=people,dc=ge,dc=co,dc=uk
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ldapPublicKey
+objectClass: shadowAccount
+objectClass: posixAccount
+objectClass: top
+givenName: Peggy
+uid: pcarter
+cn: pcarter
+loginShell: /bin/bash
+sn: Carter
+gecos: uid=pcarter,ou=int,ou=people,dc=ge,dc=co,dc=uk
+userPassword: {SSHA}59d86b70cfbac79f377a75c2b489976b7126cXXX==
+homeDirectory: /home/pcarter
+mail: peggy.carter@example.com
+uidNumber: 10000
+gidNumber: 5000
+displayName: Agent Carter
+entryUUID: 9b018989-54cb-3ee7-a2b0-a11ed6c05ee4
+pwdChangedTime: 20170120163902.914Z
+modifyTimestamp: 20170120163902Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+
+dn: uid=mmurdock,ou=int,ou=people,dc=ge,dc=co,dc=uk
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ldapPublicKey
+objectClass: shadowAccount
+objectClass: posixAccount
+objectClass: top
+givenName: Matthew
+uid: mmurdock
+cn: mmurdock
+loginShell: /bin/bash
+sn: Murdock
+gecos: uid=mmurdock,ou=int,ou=people,dc=ge,dc=co,dc=uk
+userPassword: {SSHA}59d86b70cfbac79f377a75c2b489976b7126cXXX==
+homeDirectory: /home/mmurdock
+mail: matthew.murdock@example.com
+uidNumber: 10000
+gidNumber: 5000
+displayName: Dare Devil
+entryUUID: 9b018989-54cb-3ee7-a2b0-a11ed6c05ee4
+pwdChangedTime: 20170120163902.914Z
+modifyTimestamp: 20170120163902Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+
+dn: uid=tstark,ou=int,ou=people,dc=ge,dc=co,dc=uk
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ldapPublicKey
+objectClass: shadowAccount
+objectClass: posixAccount
+objectClass: top
+givenName: Tony
+uid: tstark
+cn: tstark
+loginShell: /bin/bash
+sn: Stark
+gecos: uid=tstark,ou=int,ou=people,dc=ge,dc=co,dc=uk
+userPassword: {SSHA}59d86b70cfbac79f377a75c2b489976b7126cXXX==
+homeDirectory: /home/tstark
+mail: tony.stark@example.com
+uidNumber: 10000
+gidNumber: 5000
+displayName: Iron Man
+entryUUID: 9b018989-54cb-3ee7-a2b0-a11ed6c05ee4
+pwdChangedTime: 20170120163902.914Z
+modifyTimestamp: 20170120163902Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
+
+dn: uid=srogers,ou=int,ou=people,dc=ge,dc=co,dc=uk
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+objectClass: ldapPublicKey
+objectClass: shadowAccount
+objectClass: posixAccount
+objectClass: top
+givenName: Steve
+uid: srogers
+cn: srogers
+loginShell: /bin/bash
+sn: Rogers
+gecos: uid=srogers,ou=int,ou=people,dc=ge,dc=co,dc=uk
+userPassword: {SSHA}59d86b70cfbac79f377a75c2b489976b7126cXXX==
+homeDirectory: /home/srogers
+mail: steve.rogers@example.com
+uidNumber: 10000
+gidNumber: 5000
+displayName: Captain America
+entryUUID: 9b018989-54cb-3ee7-a2b0-a11ed6c05ee4
+pwdChangedTime: 20170120163902.914Z
+modifyTimestamp: 20170120163902Z
+modifiersName: cn=Directory Manager,cn=Root DNs,cn=config
